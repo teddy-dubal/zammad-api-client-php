@@ -1,10 +1,16 @@
 {
-    "name": "zammad/zammad-api-client-php",
+    "name": "teddy-dubal/zammad-api-client-php",
     "type": "library",
     "description": "Zammad API client for PHP",
     "homepage": "https://github.com/zammad/zammad-api-client-php",
-    "keywords": ["zammad", "api"],
-    "license": ["AGPL-3.0", "MIT"],
+    "keywords": [
+        "zammad",
+        "api"
+    ],
+    "license": [
+        "AGPL-3.0",
+        "MIT"
+    ],
     "authors": [
         {
             "name": "Zammad GmbH",
@@ -12,13 +18,15 @@
         }
     ],
     "require": {
-        "php":               ">=7.2",
+        "php": ">=7.2",
         "guzzlehttp/guzzle": "^7"
     },
     "require-dev": {
         "phpunit/phpunit": ">=5.7 <9"
     },
     "autoload": {
-        "psr-4": {"ZammadAPIClient\\": "src/"}
+        "psr-4": {
+            "ZammadAPIClient\\": "src/"
+        }
     }
 }
