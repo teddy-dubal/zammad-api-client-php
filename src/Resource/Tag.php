@@ -13,7 +13,7 @@ class Tag extends AbstractResource
         'get'    => 'tags',
         'search' => 'tag_search?term={query}',
         'add'    => 'tags/add',
-        'remove' => 'tags/remove'
+        'remove' => 'tags/remove',
     ];
 
     /**
@@ -29,7 +29,7 @@ class Tag extends AbstractResource
         $this->clearError();
 
         $object_id = intval($object_id);
-        if ( empty($object_id) ) {
+        if (empty($object_id)) {
             throw new \RuntimeException('Missing object ID');
         }
 
@@ -41,12 +41,11 @@ class Tag extends AbstractResource
             ]
         );
 
-        if ( $response->hasError() ) {
-            $this->setError( $response->getError() );
-        }
-        else {
+        if ($response->hasError()) {
+            $this->setError($response->getError());
+        } else {
             $this->clearError();
-            $this->setRemoteData( $response->getData() );
+            $this->setRemoteData($response->getData());
         }
 
         return $this;
@@ -66,11 +65,11 @@ class Tag extends AbstractResource
         $this->clearError();
 
         $object_id = intval($object_id);
-        if ( empty($object_id) ) {
+        if (empty($object_id)) {
             throw new \RuntimeException('Missing object ID');
         }
 
-        if ( empty($tag) ) {
+        if (empty($tag)) {
             throw new \RuntimeException('Missing tag');
         }
 
@@ -83,8 +82,8 @@ class Tag extends AbstractResource
             ]
         );
 
-        if ( $response->hasError() ) {
-            $this->setError( $response->getError() );
+        if ($response->hasError()) {
+            $this->setError($response->getError());
         }
 
         return $this;
@@ -101,11 +100,11 @@ class Tag extends AbstractResource
      * @return mixed                        Returns array of ZammadAPIClient\Resource\... objects
      *                                          or this object on failure.
      */
-    public function search($search_term, $page = null, $objects_per_page = null)
+    public function search($search_term, $page = null, $objects_per_page = null, $sort_by = null, $order_by = null)
     {
         $this->clearError();
 
-        if ( empty($search_term) ) {
+        if (empty($search_term)) {
             throw new \RuntimeException('Missing search term');
         }
 
@@ -116,8 +115,8 @@ class Tag extends AbstractResource
             ]
         );
 
-        if ( $response->hasError() ) {
-            $this->setError( $response->getError() );
+        if ($response->hasError()) {
+            $this->setError($response->getError());
         }
 
         $this->clearError();
@@ -125,8 +124,8 @@ class Tag extends AbstractResource
         // Return array of resource objects if no $object_id was given.
         // Note: the resource object (this object) used to execute get() will be left empty in this case.
         $objects = [];
-        foreach ( $response->getData() as $object_data ) {
-            $object = $this->getClient()->resource( get_class($this) );
+        foreach ($response->getData() as $object_data) {
+            $object = $this->getClient()->resource(get_class($this));
             $object->setRemoteData($object_data);
             $objects[] = $object;
         }
@@ -147,11 +146,11 @@ class Tag extends AbstractResource
     {
         $this->clearError();
 
-        if ( empty($object_id) ) {
+        if (empty($object_id)) {
             throw new \RuntimeException('Missing object ID');
         }
 
-        if ( empty($tag) ) {
+        if (empty($tag)) {
             throw new \RuntimeException('Missing tag');
         }
 
@@ -165,8 +164,8 @@ class Tag extends AbstractResource
             ]
         );
 
-        if ( $response->hasError() ) {
-            $this->setError( $response->getError() );
+        if ($response->hasError()) {
+            $this->setError($response->getError());
             return $this;
         }
 
